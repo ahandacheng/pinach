@@ -58,11 +58,3 @@ exports.connect = function (callback) {
     });
 };
 
-// MongoClient.connect(DB_CONN_STR, function(err, db) {
-//     console.log("连接成功！");
-//     insertData(db, function(result) {
-//         console.log(result);
-//         db.close();
-//     });
-// });
-
