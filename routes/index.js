@@ -1,8 +1,12 @@
 const router = require('koa-router')()
 
+const mongo = require('../controllers/JDBC');
 router.get('/', async (ctx, next) => {
+  mongo.connect(function(err){
+    console.log(err);
+  });
   await ctx.render('index', {
-    title: 'Hello Koa 2!'
+    title: 'Hello Koa 2!' 
   })
 })
 

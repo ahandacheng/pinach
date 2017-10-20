@@ -4,24 +4,38 @@
   "private": true,
   "scripts": {
     "start": "node bin/www",
-    "dev": "./node_modules/.bin/nodemon bin/www",
+    "dev": "nodemon bin/www",
     "prd": "pm2 start bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "async": "^2.5.0",
     "debug": "^2.6.3",
     "ejs": "~2.3.3",
-    "koa": "^2.2.0",
+    "koa": "^2.3.0",
     "koa-bodyparser": "^3.2.0",
     "koa-convert": "^1.2.0",
     "koa-json": "^2.0.2",
     "koa-logger": "^2.0.1",
-    "koa-onerror": "^1.2.1",
+    "koa-onerror": "^1.3.1",
     "koa-router": "^7.1.1",
     "koa-static": "^3.0.0",
     "koa-views": "^5.2.1"
   },
   "devDependencies": {
+    "mongodb": "^2.2.33",
     "nodemon": "^1.8.1"
-  }
+  },
+  "description": "一个古典音乐网站",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahandacheng/pinach.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahandacheng/pinach/issues"
+  },
+  "homepage": "https://github.com/ahandacheng/pinach#readme"
 }
