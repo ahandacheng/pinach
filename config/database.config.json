@@ -1,7 +1,7 @@
  {
     "host": "127.0.0.1",
     "port": "27017",
-    "db": "user",
+    "db": "bocai",
     "user": "root",
     "pass": "bocai@1234"
 }

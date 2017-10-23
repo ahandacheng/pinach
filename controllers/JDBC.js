@@ -1,12 +1,7 @@
 var mongoose = require('mongodb').MongoClient;
 var path = require('path');
-// var DB_CONN_STR = mongoose.connect('mongodb://root:1234@host:27017/user');
 var fs = require('fs');
 var async = require('async');
-
-const JDBC = function(db, callback){
-
-}
 //连接数据库
 exports.connect = function (callback) {
     async.waterfall([
@@ -26,7 +21,6 @@ exports.connect = function (callback) {
                 }
                 
                 var config = JSON.parse(file);
-                console.log(config);
                 //配置连接参数
                 var databaseConfig = {
                     host: config.host,
@@ -43,13 +37,13 @@ exports.connect = function (callback) {
             mongoose.connect('mongodb://' + config.host + ':' + config.port + '/' + config.db, {
                 user: config.user,
                 pass: config.pass
-            }, function (err) {
+            }, function (err,db) {
                 if (err) {
                     err.type = 'database';
                     return callback(err);
                 }
                 console.log('连接成功');
-                callback();
+                callback(db);
             });
         }
     ], function (err) {
@@ -57,4 +51,5 @@ exports.connect = function (callback) {
       callback();
     });
 };
+
 
