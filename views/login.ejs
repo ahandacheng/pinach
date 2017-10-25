@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <input type="password" class="form-control" placeholder="密码" name="password">
                 </div>
-                <button type="button" class="btn btn-primary full-width" id="but">登 录</button>
+                <button type="submit" class="btn btn-primary full-width" id="but">登 录</button>
             </form>
         </div>
     </div>
@@ -49,18 +49,5 @@
 
 </body>
 <script>
-    $('#but').on('click',function(){
-        $.ajax({
-            type: 'post',
-			url:'/admin/login',
-			timeout:5000,
-			data:{'name':'123','password':'123'},
-			success: function(data){
-				
-			},
-	 		error:function(){
-	 		}
-		})
-    })
 </script>
 </html>
