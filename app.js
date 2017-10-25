@@ -5,22 +5,31 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
-var fs = require('fs');
+const session = require("koa-session");
 
 const index = require('./routes/index')
 const users = require('./routes/users')
+const admin = require('./routes/admin')
 
 // error handler
 onerror(app)
 
+//session
+const CONFIG = {
+  key: 'koa:sess',
+  maxAge: 86400000,
+  httpOnly: true,
+  path:"/",
+};
+ 
+app.use(session(CONFIG, app));
 // middlewares
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
 }))
 app.use(json())
 app.use(logger())
-// app.use(require('koa-static')(__dirname + '/public'))
-
+app.use(require('koa-static')(__dirname + '/public'))
 app.use(views(__dirname + '/views', {
   extension: 'ejs'
 }))
@@ -33,7 +42,7 @@ app.use(async (ctx, next) => {
 })
 
 // routes
+app.use(admin.routes(), admin.allowedMethods())
 app.use(index.routes(), index.allowedMethods())
-app.use(users.routes(), users.allowedMethods())
 
 module.exports = app
